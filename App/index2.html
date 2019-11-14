@@ -24,6 +24,8 @@
         <!-- TODO: Add SDKs for Firebase products that you want to use
             https://firebase.google.com/docs/web/setup#available-libraries -->
             <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
         <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
@@ -37,6 +39,8 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+        // reference to firestore db
+        var db = firebase.firestore();
         </script>
         <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
@@ -48,7 +52,9 @@
          Your app may use that space for branding, controls and other customizations.-->
 
         <center>
+          <br><br><br><br>
         <img src="logo.png" id="logo">   
+        <br><br><br><br>
         <div id="firebaseui-auth-container"></div>
         <div id="loader">Loading...</div>
         <script>
@@ -85,7 +91,37 @@
           };
           // The start method will wait until the DOM is loaded.
             ui.start('#firebaseui-auth-container', uiConfig);
+
+            firebase.initializeApp(firebaseConfig);
+            var db = firebase.firestore();
         </script>
         </center>
+
+        <div id="wow">let's read from databse: <span id=data>....</span></div>
+        <script>
+        db.collection("students").doc("Rachel").set({
+          age: 19,
+          hair: "brown", 
+          present: true
+        })
+        .then(function(){
+            console.log("success");
+          })
+        .catch(function(error){
+            console.log("err")
+          })
+        var docRef = db.collection("students").doc("Rachel");
+
+        docRef.get().then(function(doc) {
+          if (doc.exists) {
+            console.log("document data: ", doc.data());
+          } else {
+            console.log("no bruh")
+          }
+        })
+  
+        // document.getElementById("wow").innerHTML = 
+
+        </script>
     </body>
 </html>
