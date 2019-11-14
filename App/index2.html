@@ -101,6 +101,7 @@
 
 
         <div id="wow">let's read from databse: <span id=data>....</span></div>
+        <div id="results"></div>
         <script>
         db.collection("students").doc("Rachel").set({
           age: 19,
@@ -123,13 +124,25 @@
             console.log("no bruh")
           }
         })
+        
+        document.getElementById("results").addEventListener("click", function() {
+          GetList(users);
+        })
+
+        function GetList(category) {
+          var dbRef = db.collection(category).get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+              var para = document.createElemetn("p");
+              document.getElementById("results").appendChild(para);
+              var node = document.createTextNode(doc.data().name);
+              para.appendChild(node);
+            })
+          })
+        }
+
+        GetList("users");
 
         // document.getElementById("wow").innerHTML = 
-
-
-
-
-​
 
         </script>
     </body>
