@@ -29,14 +29,15 @@
         <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
-            apiKey: "AIzaSyCcaat9ekOpu0m7qZTJ6gblV65DIBeWEbQ",
-            authDomain: "saq-fb.firebaseapp.com",
-            databaseURL: "https://saq-fb.firebaseio.com",
-            projectId: "saq-fb",
-            storageBucket: "saq-fb.appspot.com",
-            messagingSenderId: "351007329675",
-            appId: "1:351007329675:web:241d7fd4d85e789830b38e"
-        };
+    apiKey: "AIzaSyBvgCw0PHP1CCITIb23FR2WZ72xR7q4F98",
+    authDomain: "cohort-connect-d8de7.firebaseapp.com",
+    databaseURL: "https://cohort-connect-d8de7.firebaseio.com",
+    projectId: "cohort-connect-d8de7",
+    storageBucket: "cohort-connect-d8de7.appspot.com",
+    messagingSenderId: "1077255292403",
+    appId: "1:1077255292403:web:979011f32859177ee93e86",
+    measurementId: "G-99GGCCMMFG"
+  };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         // reference to firestore db
@@ -94,8 +95,7 @@
           // The start method will wait until the DOM is loaded.
             ui.start('#firebaseui-auth-container', uiConfig);
 
-            firebase.initializeApp(firebaseConfig);
-            var db = firebase.firestore();
+          
         </script>
         </center>
 
@@ -103,40 +103,44 @@
         <div id="wow">let's read from databse: <span id=data>....</span></div>
         <div id="results"></div>
         <script>
-        db.collection("students").doc("Rachel").set({
-          age: 19,
-          hair: "brown", 
+        // db.collection("students").doc("Rachel").set({
+        //   age: 19,
+        //   hair: "brown", 
 
-          present: true
-        })
-        .then(function(){
-            console.log("success");
-          })
-        .catch(function(error){
-            console.log("err")
-          })
-        var docRef = db.collection("students").doc("Rachel");
+        //   present: true
+        // })
+        // .then(function(){
+        //     console.log("success");
+        //   })
+        // .catch(function(error){
+        //     console.log("err")
+        //   })
+        // var docRef = db.collection("students").doc("Rachel");
 
-        docRef.get().then(function(doc) {
-          if (doc.exists) {
-            console.log("document data: ", doc.data());
-          } else {
-            console.log("no bruh")
-          }
-        })
+        // docRef.get().then(function(doc) {
+        //   if (doc.exists) {
+        //     console.log("document data: ", doc.data());
+        //   } else {
+        //     console.log("no bruh")
+        //   }
+        // })
         
-        document.getElementById("results").addEventListener("click", function() {
-          GetList(users);
-        })
+        // document.getElementById("results").addEventListener("click", function() {
+        //   GetList(users);
+        // })
 
         function GetList(category) {
           var dbRef = db.collection(category).get().then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
-              var para = document.createElemetn("p");
+              // console.log(doc.data().firstName)
+              var para = document.createElement("p");
               document.getElementById("results").appendChild(para);
-              var node = document.createTextNode(doc.data().name);
+              var node = document.createTextNode(doc.data().interests);
               para.appendChild(node);
             })
+          })
+          .catch(function(error){
+            console.log("error " +error)
           })
         }
 
