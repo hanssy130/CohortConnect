@@ -6,8 +6,8 @@
           background: #186191;
         }
         #inputstyle {
-          font-family: Arial;
-          font-size: 14px;
+            font-family: Arial;
+            font-size: 14px;
         }
         div {
           color: white;
@@ -132,9 +132,9 @@
         function GetList(category) {
           var dbRef = db.collection(category).get().then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
-              var para = document.createElemetn("p");
+              var para = document.createElement("p");
               document.getElementById("results").appendChild(para);
-              var node = document.createTextNode(doc.data().name);
+              var node = document.createTextNode(doc.data().firstName);
               para.appendChild(node);
             })
           })
@@ -142,7 +142,7 @@
 
         GetList("users");
 
-        // document.getElementById("wow").innerHTML = 
+        // document.getElementById("wow").innerHTML =
 
         </script>
     </body>
