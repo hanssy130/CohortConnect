@@ -48,7 +48,10 @@
          Your app may use that space for branding, controls and other customizations.-->
 
         <center>
+        <br><br><br><br>
         <img src="logo.png" id="logo">
+        <br><br><br><br>
+        <div id="wow">let's read from databse: <span id=data>....</span></div>
         <div id="firebaseui-auth-container"></div>
         <div id="loader">Loading...</div>
         <script>
@@ -71,7 +74,7 @@
             signInSuccessUrl: '<url-to-redirect-to-on-success>',
             signInOptions: [
               // Leave the lines as is for the providers you want to offer your users.
-              firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+              // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
               //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
               //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
               //firebase.auth.GithubAuthProvider.PROVIDER_ID,
@@ -87,5 +90,30 @@
             ui.start('#firebaseui-auth-container', uiConfig);
         </script>
         </center>
+        <script>
+        db.collection("students").doc("Rachel").set({
+          age: 19,
+          hair: "brown",
+          present: true
+        })
+        .then(function(){
+            console.log("success");
+          })
+        .catch(function(error){
+            console.log("err")
+          })
+        var docRef = db.collection("students").doc("Rachel");
+​
+        docRef.get().then(function(doc) {
+          if (doc.exists) {
+            console.log("document data: ", doc.data());
+          } else {
+            console.log("no bruh")
+          }
+        })
+
+        // document.getElementById("wow").innerHTML =
+​
+        </script>
     </body>
 </html>
