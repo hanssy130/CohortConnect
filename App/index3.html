@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+          background: #186191;
+        }
+        #inputstyle {
+            font-family: Arial;
+            font-size: 14px;
+        }
+        div {
+          color: white;
+        }
+        a {
+          text-decoration:none;
+          color: white;
+        }
+      </style>
+</head>
+<body>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+            <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+    apiKey: "AIzaSyBvgCw0PHP1CCITIb23FR2WZ72xR7q4F98",
+    authDomain: "cohort-connect-d8de7.firebaseapp.com",
+    databaseURL: "https://cohort-connect-d8de7.firebaseio.com",
+    projectId: "cohort-connect-d8de7",
+    storageBucket: "cohort-connect-d8de7.appspot.com",
+    messagingSenderId: "1077255292403",
+    appId: "1:1077255292403:web:979011f32859177ee93e86",
+    measurementId: "G-99GGCCMMFG"
+  };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // reference to firestore db
+        var db = firebase.firestore();
+        </script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
+        <script>
+            // Initialize the FirebaseUI Widget using Firebase.
+            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        </script>
+        <!-- The surrounding HTML is left untouched by FirebaseUI.
+         Your app may use that space for branding, controls and other customizations.-->
+
+        <center>
+
+        <br><br><br><br>
+        <img src="logo.png" id="logo">   
+        <br><br><br><br>
+
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+
+        </center>
+
+
+        <div id="wow">let's read from databse: <span id=data>....</span></div>
+        <div id="results"></div>
+        <script>
+        // db.collection("students").doc("Rachel").set({
+        //   age: 19,
+        //   hair: "brown", 
+
+        //   present: true
+        // })
+        // .then(function(){
+        //     console.log("success");
+        //   })
+        // .catch(function(error){
+        //     console.log("err")
+        //   })
+        // var docRef = db.collection("students").doc("Rachel");
+
+        // docRef.get().then(function(doc) {
+        //   if (doc.exists) {
+        //     console.log("document data: ", doc.data());
+        //   } else {
+        //     console.log("no bruh")
+        //   }
+        // })
+        
+        // document.getElementById("results").addEventListener("click", function() {
+        //   GetList(users);
+        // })
+
+        function GetList(category) {
+          var dbRef = db.collection(category).get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+              var para = document.createElement("p");
+              document.getElementById("results").appendChild(para);
+              var node = document.createTextNode(doc.data().firstName);
+              para.appendChild(node);
+            })
+          })
+          .catch(function(error){
+            console.log("error " +error)
+          })
+        }
+
+        GetList("users");
+
+        // document.getElementById("wow").innerHTML =
+
+        </script>
+    </body>
+</html>
