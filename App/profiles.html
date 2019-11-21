@@ -135,14 +135,21 @@
         var dbRef = db.collection(category).get().then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
                 var para = document.createElement("p");
+                var para2 = document.createElement("p");
                 document.getElementById(areaId).appendChild(para);
+                document.getElementById(areaId).appendChild(para2);
                 var node = document.createTextNode(doc.data().firstName + " " + doc.data().lastName);
                 para.appendChild(node);
                 var br = document.createElement("br");
                 para.appendChild(br);
-                var interest0 = document.createTextNode(doc.data().interests[0]);
-                var interest1 = document.createTextNode(doc.data().interests[1]);
-                document.getElementById("interests").innerHTML = interest0;
+                var node_interest0 = document.createTextNode(doc.data().interests[0]);
+                para2.appendChild(br);
+                para2.appendChild(node_interest0);
+                para2.appendChild(br);
+                var node_interest1 = document.createTextNode(doc.data().interests[1]);
+                para2.appendChild(br);
+                para2.appendChild(node_interest1);
+                para2.appendChild(br);
             })
         })
             .catch(function (error) {
