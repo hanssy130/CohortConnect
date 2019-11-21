@@ -165,8 +165,10 @@
             querySnapshot.forEach(function (doc) {
                 var para = document.createElement("p");
                 document.getElementById(areaId).appendChild(para);
-                var node = document.createTextNode(doc.data().firstName + " " + doc.data().lastName);
+                var node = document.createTextNode(doc.data().firstName + " " + doc.data().lastName + " ");
                 para.appendChild(node);
+                var interests = document.createTextNode(doc.data().interests);
+                para.appendChild(interests)
             })
         })
             .catch(function (error) {
@@ -183,7 +185,7 @@
     }
 
     GetFirstName("users", "results");
-    Delete("students", "Rachel");
+    // Delete("students", "Rachel");
 
     // document.getElementById("wow").innerHTML =
 
