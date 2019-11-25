@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <style>
+    </style>
+    <body>
+            <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+            <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+            <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+             
+            <script src="firebase-setup.js"></script>
+                // Your web app's Firebase configuration
+               
+          
+          <script>
+               var docRef = db.collection("students").doc("Rachel")
+
+               docRef.get().then(function(doc) {
+                   console.log("document data: ", doc.data());
+               })
+            </script>
+    </body>
+</html>

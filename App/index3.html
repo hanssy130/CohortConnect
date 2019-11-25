@@ -3,18 +3,42 @@
 <head>
     <style>
         body {
-          background: #186191;
+          background: #e6f2fa;
+          font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         #inputstyle {
             font-family: Arial;
             font-size: 14px;
         }
         div {
-          color: white;
+          color: black;
         }
         a {
           text-decoration:none;
-          color: white;
+          color: black;
+        }
+
+        #header {
+          background: #186191;
+          height: 100px;
+        }
+
+        #logo {
+          width: 80px;
+          position:relative;
+          left: 80px;
+          top: 50%;
+          transform: translate(-50%, -50%);
+
+        }
+
+        #app {
+          margin:0 auto;
+          width: 500px;
+          background-color: white;
+          height: 500px;
+          padding: 25px;
+          border-radius: 25px;
         }
       </style>
 </head>
@@ -52,20 +76,38 @@
         <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
 
-        <center>
+        <div id="header">
+          <img src="logo.png" id="logo">   
+        </div>
+        
 
-        <br><br><br><br>
-        <img src="logo.png" id="logo">   
-        <br><br><br><br>
+        <br><br><br><br><br>
 
         <div id="firebaseui-auth-container"></div>
-        <div id="loader">Loading...</div>
 
+        
+
+        <!-- <div id="app">
+          <center>
+          <div id="loader"><h2>Loading...</h2></div>
+          <br><br>
+          </center>
+          <div id="search">let's read from our database: 
+
+            <span id=data>....</span>
+            <div id="results"></div>
+
+          </div>
+        </div> -->
+
+        <center>
+          <a href="messaging.html"><img src="icon2.png" width="250px"></a>
+          <br><br>
+          <a href="search.html"><img src="icon3.png" width="250px"></a>
         </center>
+        
+        <br><br><br><br><br><br><br><br><br>
 
-
-        <div id="wow">let's read from databse: <span id=data>....</span></div>
-        <div id="results"></div>
         <script>
         // db.collection("students").doc("Rachel").set({
         //   age: 19,
