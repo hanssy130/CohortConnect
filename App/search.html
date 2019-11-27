@@ -29,7 +29,6 @@
           left: 80px;
           top: 50%;
           transform: translate(-50%, -50%);
-
         }
 
         #app {
@@ -39,10 +38,28 @@
           height: 500px;
           padding: 25px;
           border-radius: 25px;
+          overflow: scroll;
+          text-align: center;
         }
 
         #icon {
           padding: 30px;
+        }
+
+        #profile {
+          display: inline-block;
+          width: 100px;
+          height: 100px;
+          margin: 5px;
+          border: 3px solid white;
+          border-radius: 100px;
+          background-position: center center;
+          background-size: cover;
+        }
+
+        #name {
+          font-weight: bold;
+          font-size: 20px;
         }
       </style>
 </head>
@@ -93,12 +110,10 @@
 
         <div id="app">
           <center>
-          <div id="loader"><h2>Loading...</h2></div>
+          <div id="loader"><h2>Classlist</h2></div>
           <br><br>
           </center>
-          <div id="search">let's read from our database: 
-
-            <span id=data>....</span>
+          <div id="search">
             <div id="results"></div>
 
           </div>
@@ -143,11 +158,32 @@
 
         function GetList(category) {
           var dbRef = db.collection(category).get().then(function (querySnapshot) {
+            
             querySnapshot.forEach(function (doc) {
+
+              // Creates profile picture.
+              var img = new Image();
+              img.src = doc.data().pic;
+              img.id = "profile"
+              document.getElementById('app').appendChild(img); 
+
+              // Prints name.
               var para = document.createElement("p");
-              document.getElementById("results").appendChild(para);
-              var node = document.createTextNode(doc.data().firstName);
+              para.id = "name"
+              document.getElementById("app").appendChild(para);
+              var node = document.createTextNode(doc.data().firstName + " " + doc.data().lastName);
               para.appendChild(node);
+
+              // Prints interests
+              var parabeginning = document.createElement("p")
+              parabeginning.innerHTML = "<b>Interests:</b>"
+              document.getElementById("app").appendChild(parabeginning);
+              let interests = doc.data().interests;
+              var para = document.createElement("p");
+              interests.forEach((item =>{
+                  para.innerHTML += item + ", ";
+                  document.getElementById("app").appendChild(para);
+              }))
             })
           })
           .catch(function(error){
@@ -155,9 +191,19 @@
           })
         }
 
+        var x = db.collection("users").doc("86lRKEu8nf10F96t61xj").get().then(
+          function(doc) {
+            console.log(doc.data().pic)
+          }
+        )
+        
         GetList("users");
 
-        // document.getElementById("wow").innerHTML =
+        // console.log(db.collection("users").doc("86lRKEu8nf10F96t61xj").get().then(
+        //   function(doc) {
+        //     if 
+        //   }
+        // ))
 
         </script>
     </body>
