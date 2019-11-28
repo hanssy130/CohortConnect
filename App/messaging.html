@@ -48,10 +48,6 @@
     #icon {
       padding: 30px;
     }
-
-    #signout {
-      font-size: medium;
-    }
   </style>
 </head>
 
@@ -118,8 +114,6 @@
       <a href="messaging.html"><img id="icon" src="icon2.png" width="100px"></a>
       <a href="search.html"><img id="icon" src="icon3.png" width="100px"></a>
     </div>
-    <br><br><br><br><br>
-    <button id="signout">Signout</button>
   </center>
   <br><br><br><br><br><br><br><br><br>
 
@@ -141,7 +135,8 @@
 
     GetList("users");
 
-    const docRef = db.doc("messages/userAuserB/conversations/hFpyMq5pMPJv0eZcoHFX")
+    const docRef = db.doc("messages/userAuserB/conversations/hFpyMq5pMPJv0eZcoHFX");
+    const colRef = db.collection("messages/userAuserB/conversations");
     const outputHeader = document.querySelector("#hotDogOutput");
     const inputTextField = document.querySelector("#latestHotDogStatus");
     const saveButton = document.querySelector("#saveButton");
@@ -151,25 +146,27 @@
     saveButton.addEventListener("click", function () {
       const textToSave = inputTextField.value;
       console.log("I am going to add " + textToSave + " as a new collection.");
-      docRef.set({
-        text: textToSave
+      colRef.set({
+        text: textToSave,
+        sent_at: new Date(),
       }).then(function () {
         console.log("Text added!");
       }).catch(function (error) {
         console.log("Got an error: ", error);
       })
-    })
+    });
 
     loadButton.addEventListener("click", function () {
       docRef.get().then(function (doc) {
         if (doc && doc.exists) {
           const myData = doc.data();
           outputHeader.innerHTML = "Messages:<br>" + myData.text;
+          // separate message and my data into diff section
         }
       }).catch(function (error) {
         console.log("Got an error: ", error);
       });
-    })
+    });
 
     getRealtimeUpdates = function () {
       docRef.onSnapshot(function (doc) {
@@ -178,7 +175,7 @@
           outputHeader.innerHTML = "Messages:<br>" + myData.text;
         }
       });
-    }
+    };
 
     getRealtimeUpdates();
 
@@ -228,20 +225,6 @@
         })
     }
     getMessages("/messages/userAuserB/conversations")
-
-    //making sign out button
-    function signout() {
-      document.getElementById("signout").onclick = ()=>
-      {
-      firebase.auth().signOut().then(function(){
-        console.log("user signed out")
-        window.location.href="index.html"
-      }).catch(function(error){
-        console.log("error")
-      })
-      }
-    }
-    signout();
 
   </script>
 

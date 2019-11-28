@@ -44,10 +44,6 @@
       padding: 25px;
       border-radius: 25px;
     }
-
-    #signout {
-      font-size: medium;
-    }
   </style>
 </head>
 
@@ -89,6 +85,7 @@
     <img src="logo.png" id="logo">
   </div>
 
+
   <br><br><br><br><br>
 
   <div id="firebaseui-auth-container"></div>
@@ -112,11 +109,10 @@
     <a href="messaging.html"><img src="icon2.png" width="250px"></a>
     <br><br>
     <a href="search.html"><img src="icon3.png" width="250px"></a>
-    <br><br><br><br><br>
-    <button id="signout">Signout</button>
   </center>
 
   <br><br><br><br><br><br><br><br><br>
+
   <script>
     function GetList(category) {
       var dbRef = db.collection(category).get().then(function (querySnapshot) {
@@ -134,20 +130,6 @@
 
     GetList("users");
 
-    //making sign out button
-    function signout() {
-    document.getElementById("signout").onclick = ()=>
-    {
-    firebase.auth().signOut().then(function(){
-        console.log("user signed out")
-        window.location.href="index.html"
-    }).catch(function(error){
-        console.log("error")
-    })
-    }
-}
-signout();
-
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         //User is signed in.
@@ -161,7 +143,6 @@ signout();
         console.log(user.email)
       }
     })
-
   </script>
 </body>
 

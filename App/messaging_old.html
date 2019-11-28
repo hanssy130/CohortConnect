@@ -11,14 +11,14 @@
             <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
              
             <script src="firebase-setup.js"></script>
-                // Your web app's Firebase configuration
+            <!--Your web app's Firebase configuration-->
                
           
           <script>
-               var docRef = db.collection("students").doc("Rachel")
+               var docRef = db.collection("messages").doc("userAuserB").collection('conversations').doc('hFpyMq5pMPJv0eZcoHFX').doc('text');
 
                docRef.get().then(function(doc) {
-                   console.log("document data: ", doc.data());
+                   document.write("document data: ", doc.data());
                })
             </script>
     </body>
