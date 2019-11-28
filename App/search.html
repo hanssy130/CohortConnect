@@ -134,7 +134,6 @@
           var dbRef = db.collection(category).get().then(function (querySnapshot) {
             
             querySnapshot.forEach(function (doc) {
-
               // Creates profile picture.
               var img = new Image();
               img.src = doc.data().pic;
@@ -145,7 +144,7 @@
               var para = document.createElement("p");
               para.id = "name"
               document.getElementById("app").appendChild(para);
-              var node = document.createTextNode(doc.data().firstName + " " + doc.data().lastName);
+              var node = document.createTextNode(doc.data().name);
               para.appendChild(node);
 
               // Prints interests

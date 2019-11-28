@@ -224,7 +224,7 @@
         db.collection("accounts").doc(user.uid).set({
           name: user.displayName,
           email: user.email,
-          pic: false,
+          pic: "http://www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg",
 
         }, { merge: true });
       console.log(user.displayName);
