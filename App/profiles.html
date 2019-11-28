@@ -106,6 +106,7 @@
 <div id="wow">let's read from databse: <span id=data>....</span></div>
 <div id="results"></div>
 <div id="interests"></div>
+<button id="signout" style="font-size:12pt;">Signout</button>
 <script>
     function AddUser(user_id, u_first, u_last, u_age, interests) {
         db.collection("users").doc(user_id).set({
@@ -146,6 +147,20 @@
                 console.log("error " + error)
             })
     }
+
+    // making sign out button
+function signout() {
+    document.getElementById("signout").onclick = ()=>
+    {
+    firebase.auth().signOut().then(function(){
+        console.log("user signed out")
+        window.location.href="index.html"
+    }).catch(function(error){
+        console.log("error")
+    })
+    }
+}
+signout();
 
     function Delete(category, element) {
         db.collection(category).doc(element).delete().then(function () {

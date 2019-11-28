@@ -65,6 +65,10 @@
       font-weight: bold;
       font-size: 20px;
     }
+
+    #signout {
+      font-size: medium;
+    }
   </style>
 </head>
 
@@ -132,6 +136,8 @@
       <a href="messaging.html"><img id="icon" src="icon2.png" width="100px"></a>
       <a href="search.html"><img id="icon" src="icon3.png" width="100px"></a>
     </div>
+    <br><br><br><br><br>
+    <button id="signout">Signout</button>
   </center>
 
   <br><br><br><br><br><br><br><br><br>
@@ -172,6 +178,20 @@
         })
     }
     GetList("users");
+
+    //making sign out button
+    function signout() {
+      document.getElementById("signout").onclick = ()=>
+      {
+      firebase.auth().signOut().then(function(){
+        console.log("user signed out")
+        window.location.href="index.html"
+      }).catch(function(error){
+        console.log("error")
+      })
+      }
+    }
+    signout();
   </script>
 </body>
 
