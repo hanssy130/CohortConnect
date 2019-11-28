@@ -1,93 +1,98 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <style>
-        body {
-          background: #e6f2fa;
-          font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        #inputstyle {
-            font-family: Arial;
-            font-size: 14px;
-        }
-        div {
-          color: black;
-        }
-        a {
-          text-decoration:none;
-          color: black;
-        }
+  <style>
+    body {
+      background: #e6f2fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        #header {
-          background: #186191;
-          height: 100px;
-        }
+    #inputstyle {
+      font-family: Arial;
+      font-size: 14px;
+    }
 
-        #logo {
-          width: 80px;
-          position:relative;
-          left: 80px;
-          top: 50%;
-          transform: translate(-50%, -50%);
+    div {
+      color: black;
+    }
 
-        }
+    a {
+      text-decoration: none;
+      color: black;
+    }
 
-        #app {
-          margin:0 auto;
-          width: 500px;
-          background-color: white;
-          height: 500px;
-          padding: 25px;
-          border-radius: 25px;
-        }
-      </style>
+    #header {
+      background: #186191;
+      height: 100px;
+    }
+
+    #logo {
+      width: 80px;
+      position: relative;
+      left: 80px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+    }
+
+    #app {
+      margin: 0 auto;
+      width: 500px;
+      background-color: white;
+      height: 500px;
+      padding: 25px;
+      border-radius: 25px;
+    }
+  </style>
 </head>
-<body>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#available-libraries -->
-            <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
 
-        <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-    apiKey: "AIzaSyBvgCw0PHP1CCITIb23FR2WZ72xR7q4F98",
-    authDomain: "cohort-connect-d8de7.firebaseapp.com",
-    databaseURL: "https://cohort-connect-d8de7.firebaseio.com",
-    projectId: "cohort-connect-d8de7",
-    storageBucket: "cohort-connect-d8de7.appspot.com",
-    messagingSenderId: "1077255292403",
-    appId: "1:1077255292403:web:979011f32859177ee93e86",
-    measurementId: "G-99GGCCMMFG"
-  };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        // reference to firestore db
-        var db = firebase.firestore();
-        </script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
-        <script>
-            // Initialize the FirebaseUI Widget using Firebase.
-            var ui = new firebaseui.auth.AuthUI(firebase.auth());
-        </script>
-        <!-- The surrounding HTML is left untouched by FirebaseUI.
+<body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBvgCw0PHP1CCITIb23FR2WZ72xR7q4F98",
+      authDomain: "cohort-connect-d8de7.firebaseapp.com",
+      databaseURL: "https://cohort-connect-d8de7.firebaseio.com",
+      projectId: "cohort-connect-d8de7",
+      storageBucket: "cohort-connect-d8de7.appspot.com",
+      messagingSenderId: "1077255292403",
+      appId: "1:1077255292403:web:979011f32859177ee93e86",
+      measurementId: "G-99GGCCMMFG"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // reference to firestore db
+    var db = firebase.firestore();
+  </script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <script>
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+  </script>
+  <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
 
-        <div id="header">
-          <img src="logo.png" id="logo">   
-        </div>
-        
+  <div id="header">
+    <img src="logo.png" id="logo">
+  </div>
 
-        <br><br><br><br><br>
 
-        <div id="firebaseui-auth-container"></div>
+  <br><br><br><br><br>
 
-        
+  <div id="firebaseui-auth-container"></div>
 
-        <!-- <div id="app">
+
+
+  <!-- <div id="app">
           <center>
           <div id="loader"><h2>Loading...</h2></div>
           <br><br>
@@ -100,59 +105,45 @@
           </div>
         </div> -->
 
-        <center>
-          <a href="messaging.html"><img src="icon2.png" width="250px"></a>
-          <br><br>
-          <a href="search.html"><img src="icon3.png" width="250px"></a>
-        </center>
-        
-        <br><br><br><br><br><br><br><br><br>
+  <center>
+    <a href="messaging.html"><img src="icon2.png" width="250px"></a>
+    <br><br>
+    <a href="search.html"><img src="icon3.png" width="250px"></a>
+  </center>
 
-        <script>
-        // db.collection("students").doc("Rachel").set({
-        //   age: 19,
-        //   hair: "brown", 
+  <br><br><br><br><br><br><br><br><br>
 
-        //   present: true
-        // })
-        // .then(function(){
-        //     console.log("success");
-        //   })
-        // .catch(function(error){
-        //     console.log("err")
-        //   })
-        // var docRef = db.collection("students").doc("Rachel");
+  <script>
+    function GetList(category) {
+      var dbRef = db.collection(category).get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          var para = document.createElement("p");
+          document.getElementById("results").appendChild(para);
+          var node = document.createTextNode(doc.data().firstName);
+          para.appendChild(node);
+        })
+      })
+        .catch(function (error) {
+          console.log("error " + error)
+        })
+    }
 
-        // docRef.get().then(function(doc) {
-        //   if (doc.exists) {
-        //     console.log("document data: ", doc.data());
-        //   } else {
-        //     console.log("no bruh")
-        //   }
-        // })
-        
-        // document.getElementById("results").addEventListener("click", function() {
-        //   GetList(users);
-        // })
+    GetList("users");
 
-        function GetList(category) {
-          var dbRef = db.collection(category).get().then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-              var para = document.createElement("p");
-              document.getElementById("results").appendChild(para);
-              var node = document.createTextNode(doc.data().firstName);
-              para.appendChild(node);
-            })
-          })
-          .catch(function(error){
-            console.log("error " +error)
-          })
-        }
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        //User is signed in.
+        db.collection("users").doc(user.uid).set({
+          name: user.displayName,
+          email: user.email,
+          pic: "http://www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg",
+          interests: ["N/A"],
+        }, { merge: true });
+        console.log(user.displayName);
+        console.log(user.email)
+      }
+    })
+  </script>
+</body>
 
-        GetList("users");
-
-        // document.getElementById("wow").innerHTML =
-
-        </script>
-    </body>
 </html>

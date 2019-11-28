@@ -1,134 +1,139 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <style>
-        body {
-          background: #e6f2fa;
-          font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        #inputstyle {
-            font-family: Arial;
-            font-size: 14px;
-        }
-        div {
-          color: black;
-        }
-        a {
-          text-decoration:none;
-          color: black;
-        }
+  <style>
+    body {
+      background: #e6f2fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        #header {
-          background: #186191;
-          height: 100px;
-        }
+    #inputstyle {
+      font-family: Arial;
+      font-size: 14px;
+    }
 
-        #logo {
-          width: 80px;
-          position:relative;
-          left: 80px;
-          top: 50%;
-          transform: translate(-50%, -50%);
+    div {
+      color: black;
+    }
 
-        }
+    a {
+      text-decoration: none;
+      color: black;
+    }
 
-        #app {
-          margin:0 auto;
-          width: 500px;
-          background-color: white;
-          height: 500px;
-          padding: 25px;
-          border-radius: 25px;
-        }
+    #header {
+      background: #186191;
+      height: 100px;
+    }
 
-        #icon {
-          padding: 30px;
-        }
-      </style>
+    #logo {
+      width: 80px;
+      position: relative;
+      left: 80px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+    }
+
+    #app {
+      margin: 0 auto;
+      width: 500px;
+      background-color: white;
+      height: 500px;
+      padding: 25px;
+      border-radius: 25px;
+    }
+
+    #icon {
+      padding: 30px;
+    }
+  </style>
 </head>
-<body>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#available-libraries -->
-            <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
 
-        <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-    apiKey: "AIzaSyBvgCw0PHP1CCITIb23FR2WZ72xR7q4F98",
-    authDomain: "cohort-connect-d8de7.firebaseapp.com",
-    databaseURL: "https://cohort-connect-d8de7.firebaseio.com",
-    projectId: "cohort-connect-d8de7",
-    storageBucket: "cohort-connect-d8de7.appspot.com",
-    messagingSenderId: "1077255292403",
-    appId: "1:1077255292403:web:979011f32859177ee93e86",
-    measurementId: "G-99GGCCMMFG"
-  };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        // reference to firestore db
-        var db = firebase.firestore();
-        </script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
-        <script>
-            // Initialize the FirebaseUI Widget using Firebase.
-            var ui = new firebaseui.auth.AuthUI(firebase.auth());
-        </script>
-        <!-- The surrounding HTML is left untouched by FirebaseUI.
+<body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBvgCw0PHP1CCITIb23FR2WZ72xR7q4F98",
+      authDomain: "cohort-connect-d8de7.firebaseapp.com",
+      databaseURL: "https://cohort-connect-d8de7.firebaseio.com",
+      projectId: "cohort-connect-d8de7",
+      storageBucket: "cohort-connect-d8de7.appspot.com",
+      messagingSenderId: "1077255292403",
+      appId: "1:1077255292403:web:979011f32859177ee93e86",
+      measurementId: "G-99GGCCMMFG"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // reference to firestore db
+    var db = firebase.firestore();
+  </script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <script>
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+  </script>
+  <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
 
-        <div id="header">
-          <img src="logo.png" id="logo">   
-        </div>
-        
-
-        <br><br><br><br><br>
-
-        <div id="firebaseui-auth-container"></div>
-
-        
-
-        <div id="app">
-            <h1 id="hotDogOutput">Messages:</h1>
-        </div>
-        <center>
-          <br>
-        <input type="typefield" id="latestHotDogStatus" style="width:400px;font-size:12pt;height:40px;"/>
-        <button id="saveButton" style="font-size:12pt;">Save</button>
-        <button id="loadButton" style="font-size:12pt;">Load</button>
-        </center>
-        <br><br>
-
-        <br><br><br>
-        <center>
-        <div id="footer">
-          <a href="index3.html"><img id="icon" src="icon1.png" width="100px"></a>
-          <a href="messaging.html"><img id="icon" src="icon2.png" width="100px"></a>
-          <a href="search.html"><img id="icon" src="icon3.png" width="100px"></a>
-        </div>
-      </center>
-        <br><br><br><br><br><br><br><br><br>
+  <div id="header">
+    <img src="logo.png" id="logo">
+  </div>
 
 
-        <script>
-        function GetList(category) {
-          var dbRef = db.collection(category).get().then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-              var para = document.createElement("p");
-              document.getElementById("messages").appendChild(para);
-              var node = document.createTextNode(doc.data().firstName);
-              para.appendChild(node);
-            })
-          })
-          .catch(function(error){
-            console.log("error " + error)
-          })
-        }
+  <br><br><br><br><br>
 
-        GetList("users");
+  <div id="firebaseui-auth-container"></div>
+
+
+
+  <div id="app">
+    <h1 id="hotDogOutput">Messages:</h1>
+  </div>
+  <center>
+    <br>
+    <input type="typefield" id="latestHotDogStatus" style="width:400px;font-size:12pt;height:40px;" />
+    <button id="saveButton" style="font-size:12pt;">Save</button>
+    <button id="loadButton" style="font-size:12pt;">Load</button>
+  </center>
+  <br><br>
+
+  <br><br><br>
+  <center>
+    <div id="footer">
+      <a href="index3.html"><img id="icon" src="icon1.png" width="100px"></a>
+      <a href="messaging.html"><img id="icon" src="icon2.png" width="100px"></a>
+      <a href="search.html"><img id="icon" src="icon3.png" width="100px"></a>
+    </div>
+  </center>
+  <br><br><br><br><br><br><br><br><br>
+
+
+  <script>
+    function GetList(category) {
+      var dbRef = db.collection(category).get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          var para = document.createElement("p");
+          document.getElementById("messages").appendChild(para);
+          var node = document.createTextNode(doc.data().firstName);
+          para.appendChild(node);
+        })
+      })
+        .catch(function (error) {
+          console.log("error " + error)
+        })
+    }
+
+    GetList("users");
 
     const docRef = db.doc("messages/userAuserB/conversations/hFpyMq5pMPJv0eZcoHFX")
     const outputHeader = document.querySelector("#hotDogOutput");
@@ -137,19 +142,19 @@
     const loadButton = document.querySelector("#loadButton");
 
 
-    saveButton.addEventListener("click", function() {
+    saveButton.addEventListener("click", function () {
       const textToSave = inputTextField.value;
       console.log("I am going to add " + textToSave + " as a new collection.");
       docRef.add({
         text: textToSave
-      }).then(function() {
+      }).then(function () {
         console.log("Text added!");
       }).catch(function (error) {
         console.log("Got an error: ", error);
       })
     })
 
-    loadButton.addEventListener("click", function() {
+    loadButton.addEventListener("click", function () {
       docRef.get().then(function (doc) {
         if (doc && doc.exists) {
           const myData = doc.data();
@@ -160,7 +165,7 @@
       });
     })
 
-    getRealtimeUpdates = function() {
+    getRealtimeUpdates = function () {
       docRef.onSnapshot(function (doc) {
         if (doc && doc.exists) {
           const myData = doc.data();
@@ -172,67 +177,54 @@
     getRealtimeUpdates();
 
     function getMessages(category) {
-          var dbRef = db.collection(category).get().then(function (querySnapshot) {
-            
-            querySnapshot.forEach(function (doc) {
+      var dbRef = db.collection(category).get().then(function (querySnapshot) {
 
-              // Creates the name:
+        querySnapshot.forEach(function (doc) {
 
-              // Creates the text.
-              var para2 = document.createElement("p");
-              para2.id = "text"
-              document.getElementById("app").appendChild(para2);
-              var txtmsg = document.createTextNode(doc.data().text);
-              para2.appendChild(txtmsg)
+          // Creates the name:
 
-              // // Creates profile picture.
-              // var img = new Image();
-              // img.src = doc.data().pic;
-              // img.id = "profile"
-              // document.getElementById('app').appendChild(img); 
+          // Creates the text.
+          var para2 = document.createElement("p");
+          para2.id = "text"
+          document.getElementById("app").appendChild(para2);
+          var txtmsg = document.createTextNode(doc.data().text);
+          para2.appendChild(txtmsg)
 
-              // // Prints name.
-              // var para = document.createElement("p");
-              // para.id = "name"
-              // document.getElementById("app").appendChild(para);
-              // var node = document.createTextNode(doc.data().firstName + " " + doc.data().lastName);
-              // para.appendChild(node);
+          // // Creates profile picture.
+          // var img = new Image();
+          // img.src = doc.data().pic;
+          // img.id = "profile"
+          // document.getElementById('app').appendChild(img); 
 
-              // // Prints interests
-              // var parabeginning = document.createElement("p")
-              // parabeginning.innerHTML = "<b>Interests:</b>"
-              // document.getElementById("app").appendChild(parabeginning);
-              // let interests = doc.data().interests;
+          // // Prints name.
+          // var para = document.createElement("p");
+          // para.id = "name"
+          // document.getElementById("app").appendChild(para);
+          // var node = document.createTextNode(doc.data().firstName + " " + doc.data().lastName);
+          // para.appendChild(node);
 
-              // var para = document.createElement("p");
-              // interests.forEach((item =>{
-              //     para.innerHTML += item + ", ";
-              //     document.getElementById("app").appendChild(para);
-              // }))
+          // // Prints interests
+          // var parabeginning = document.createElement("p")
+          // parabeginning.innerHTML = "<b>Interests:</b>"
+          // document.getElementById("app").appendChild(parabeginning);
+          // let interests = doc.data().interests;
 
-            })
-          })
-          .catch(function(error){
-            console.log("error " +error)
-          })
-        }
+          // var para = document.createElement("p");
+          // interests.forEach((item =>{
+          //     para.innerHTML += item + ", ";
+          //     document.getElementById("app").appendChild(para);
+          // }))
+
+        })
+      })
+        .catch(function (error) {
+          console.log("error " + error)
+        })
+    }
     getMessages("/messages/userAuserB/conversations")
 
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        //User is signed in.
-        db.collection("accounts").doc(user.uid).set({
-          name: user.displayName,
-          email: user.email,
-          pic: "http://www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg",
+  </script>
 
-        }, { merge: true });
-      console.log(user.displayName);
-      console.log(user.email)
-      }
-    })
+</body>
 
-    </script>
-
-    </body>
 </html>

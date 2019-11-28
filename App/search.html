@@ -1,170 +1,178 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <style>
-        body {
-          background: #e6f2fa;
-          font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        #inputstyle {
-            font-family: Arial;
-            font-size: 14px;
-        }
-        div {
-          color: black;
-        }
-        a {
-          text-decoration:none;
-          color: black;
-        }
+  <style>
+    body {
+      background: #e6f2fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        #header {
-          background: #186191;
-          height: 100px;
-        }
+    #inputstyle {
+      font-family: Arial;
+      font-size: 14px;
+    }
 
-        #logo {
-          width: 80px;
-          position:relative;
-          left: 80px;
-          top: 50%;
-          transform: translate(-50%, -50%);
-        }
+    div {
+      color: black;
+    }
 
-        #app {
-          margin:0 auto;
-          width: 500px;
-          background-color: white;
-          height: 500px;
-          padding: 25px;
-          border-radius: 25px;
-          overflow: scroll;
-          text-align: center;
-        }
+    a {
+      text-decoration: none;
+      color: black;
+    }
 
-        #icon {
-          padding: 30px;
-        }
+    #header {
+      background: #186191;
+      height: 100px;
+    }
 
-        #profile {
-          display: inline-block;
-          width: 100px;
-          height: 100px;
-          margin: 5px;
-          border: 3px solid white;
-          border-radius: 100px;
-          background-position: center center;
-          background-size: cover;
-        }
+    #logo {
+      width: 80px;
+      position: relative;
+      left: 80px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-        #name {
-          font-weight: bold;
-          font-size: 20px;
-        }
-      </style>
+    #app {
+      margin: 0 auto;
+      width: 500px;
+      background-color: white;
+      height: 500px;
+      padding: 25px;
+      border-radius: 25px;
+      overflow: scroll;
+      text-align: center;
+    }
+
+    #icon {
+      padding: 30px;
+    }
+
+    #profile {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      margin: 5px;
+      border: 3px solid white;
+      border-radius: 100px;
+      background-position: center center;
+      background-size: cover;
+    }
+
+    #name {
+      font-weight: bold;
+      font-size: 20px;
+    }
+  </style>
 </head>
-<body>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#available-libraries -->
-            <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
 
-        <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-    apiKey: "AIzaSyBvgCw0PHP1CCITIb23FR2WZ72xR7q4F98",
-    authDomain: "cohort-connect-d8de7.firebaseapp.com",
-    databaseURL: "https://cohort-connect-d8de7.firebaseio.com",
-    projectId: "cohort-connect-d8de7",
-    storageBucket: "cohort-connect-d8de7.appspot.com",
-    messagingSenderId: "1077255292403",
-    appId: "1:1077255292403:web:979011f32859177ee93e86",
-    measurementId: "G-99GGCCMMFG"
-  };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        // reference to firestore db
-        var db = firebase.firestore();
-        </script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
-        <script>
-            // Initialize the FirebaseUI Widget using Firebase.
-            var ui = new firebaseui.auth.AuthUI(firebase.auth());
-        </script>
-        <!-- The surrounding HTML is left untouched by FirebaseUI.
+<body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBvgCw0PHP1CCITIb23FR2WZ72xR7q4F98",
+      authDomain: "cohort-connect-d8de7.firebaseapp.com",
+      databaseURL: "https://cohort-connect-d8de7.firebaseio.com",
+      projectId: "cohort-connect-d8de7",
+      storageBucket: "cohort-connect-d8de7.appspot.com",
+      messagingSenderId: "1077255292403",
+      appId: "1:1077255292403:web:979011f32859177ee93e86",
+      measurementId: "G-99GGCCMMFG"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // reference to firestore db
+    var db = firebase.firestore();
+  </script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <script>
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+  </script>
+  <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
 
-        <div id="header">
-          <img src="logo.png" id="logo">   
-        </div>
-        
+  <div id="header">
+    <img src="logo.png" id="logo">
+  </div>
 
-        <br><br><br><br><br>
 
-        <div id="firebaseui-auth-container"></div>
+  <br><br><br><br><br>
 
-        
+  <div id="firebaseui-auth-container"></div>
 
-        <div id="app">
-          <center>
-          <div id="loader"><h2>Classlist</h2></div>
-          <br><br>
-          </center>
-          <div id="search">
-            <div id="results"></div>
 
-          </div>
-        </div>
-        <br><br><br>
-        <center>
-            <div id="footer">
-              <a href="index3.html"><img id="icon" src="icon1.png" width="100px"></a>
-              <a href="messaging.html"><img id="icon" src="icon2.png" width="100px"></a>
-              <a href="search.html"><img id="icon" src="icon3.png" width="100px"></a>
-            </div>
-          </center>
-        
-        <br><br><br><br><br><br><br><br><br>
 
-        <script>
-        function GetList(category) {
-          var dbRef = db.collection(category).get().then(function (querySnapshot) {
-            
-            querySnapshot.forEach(function (doc) {
-              // Creates profile picture.
-              var img = new Image();
-              img.src = doc.data().pic;
-              img.id = "profile"
-              document.getElementById('app').appendChild(img); 
+  <div id="app">
+    <center>
+      <div id="loader">
+        <h2>Classlist</h2>
+      </div>
+      <br><br>
+    </center>
+    <div id="search">
+      <div id="results"></div>
 
-              // Prints name.
-              var para = document.createElement("p");
-              para.id = "name"
-              document.getElementById("app").appendChild(para);
-              var node = document.createTextNode(doc.data().name);
-              para.appendChild(node);
+    </div>
+  </div>
+  <br><br><br>
+  <center>
+    <div id="footer">
+      <a href="index3.html"><img id="icon" src="icon1.png" width="100px"></a>
+      <a href="messaging.html"><img id="icon" src="icon2.png" width="100px"></a>
+      <a href="search.html"><img id="icon" src="icon3.png" width="100px"></a>
+    </div>
+  </center>
 
-              // Prints interests
-              var parabeginning = document.createElement("p")
-              parabeginning.innerHTML = "<b>Interests:</b>"
-              document.getElementById("app").appendChild(parabeginning);
-              let interests = doc.data().interests;
+  <br><br><br><br><br><br><br><br><br>
 
-              var para = document.createElement("p");
-              interests.forEach((item =>{
-                  para.innerHTML += item + ", ";
-                  document.getElementById("app").appendChild(para);
-              }))
-            })
-          })
-          .catch(function(error){
-            console.log("error " +error)
-          })
-        }        
-        GetList("users");
-        </script>
-    </body>
+  <script>
+    function GetList(category) {
+      var dbRef = db.collection(category).get().then(function (querySnapshot) {
+
+        querySnapshot.forEach(function (doc) {
+          // Creates profile picture.
+          var img = new Image();
+          img.src = doc.data().pic;
+          img.id = "profile"
+          document.getElementById('app').appendChild(img);
+
+          // Prints name.
+          var para = document.createElement("p");
+          para.id = "name"
+          document.getElementById("app").appendChild(para);
+          var node = document.createTextNode(doc.data().name);
+          para.appendChild(node);
+
+          // Prints interests
+          var parabeginning = document.createElement("p")
+          parabeginning.innerHTML = "<b>Interests:</b>"
+          document.getElementById("app").appendChild(parabeginning);
+          let interests = doc.data().interests;
+
+          var para = document.createElement("p");
+          interests.forEach((item => {
+            para.innerHTML += item + ", ";
+            document.getElementById("app").appendChild(para);
+          }))
+        })
+      })
+        .catch(function (error) {
+          console.log("error " + error)
+        })
+    }
+    GetList("users");
+  </script>
+</body>
+
 </html>
