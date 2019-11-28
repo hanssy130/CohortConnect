@@ -145,7 +145,7 @@
     saveButton.addEventListener("click", function () {
       const textToSave = inputTextField.value;
       console.log("I am going to add " + textToSave + " as a new collection.");
-      docRef.add({
+      docRef.set({
         text: textToSave
       }).then(function () {
         console.log("Text added!");
