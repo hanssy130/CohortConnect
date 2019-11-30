@@ -120,21 +120,21 @@
 
 
   <script>
-    function GetList(category) {
-      var dbRef = db.collection(category).get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          var para = document.createElement("p");
-          document.getElementById("messages").appendChild(para);
-          var node = document.createTextNode(doc.data().firstName);
-          para.appendChild(node);
-        })
-      })
-        .catch(function (error) {
-          console.log("error " + error)
-        })
-    }
+    // function GetList(category) {
+    //   var dbRef = db.collection(category).get().then(function (querySnapshot) {
+    //     querySnapshot.forEach(function (doc) {
+    //       var para = document.createElement("p");
+    //       document.getElementById("messages").appendChild(para);
+    //       var node = document.createTextNode(doc.data().firstName);
+    //       para.appendChild(node);
+    //     })
+    //   })
+    //     .catch(function (error) {
+    //       console.log("error " + error)
+    //     })
+    // }
 
-    GetList("users");
+    // GetList("users");
 
     const docRef = db.doc("messages/userAuserB/conversations/hFpyMq5pMPJv0eZcoHFX");
     const colRef = db.collection("messages/userAuserB/conversations");
@@ -160,32 +160,39 @@
 
 
     loadButton.addEventListener("click", function () {
-      docRef.get().then(function (doc) {
-        if (doc && doc.exists) {
-          const myData = doc.data();
-          outputHeader.innerHTML = "Messages:<br>" + myData.text;
+      const myData = inputTextField.value;
+      console.log("loadbutton clicked");
+      // docRef.get().then(function (doc) {
+      //   if (doc && doc.exists) {
+          // document.getElementById('app').innerHTML = myData.text;
+
+        var para2 = document.createElement("p");
+        para2.id = "text";
+        document.getElementById("app").appendChild(para2);
+        var txtmsg = document.createTextNode(myData);
+        para2.appendChild(txtmsg);
           // separate message and my data into diff section
-        }
-      }).catch(function (error) {
-        console.log("Got an error: ", error);
-      });
+        // }
+      // }).catch(function (error) {
+      //   console.log("Got an error: ", error);
+      // });
     });
 
-    getRealtimeUpdates = function () {
-      docRef.onSnapshot(function (doc) {
-        if (doc && doc.exists) {
-          // docRef.sortBy('sent_at');
-          const myData = doc.data();
-          // outputHeader.innerHTML = "Messages:<br/>";
-          inputTextField.innerHTML = myData.text;
-        }
-        else{
-          console.log('huh');
-        }
-      });
-    };
-
-    getRealtimeUpdates();
+    // getRealtimeUpdates = function () {
+    //   docRef.onSnapshot(function (doc) {
+    //     if (doc && doc.exists) {
+    //       // docRef.sortBy('sent_at');
+    //       const myData = doc.data();
+    //       // outputHeader.innerHTML = "Messages:<br/>";
+    //       inputTextField.innerHTML = myData.text;
+    //     }
+    //     else{
+    //       console.log('huh');
+    //     }
+    //   });
+    // };
+    //
+    // getRealtimeUpdates();
 
     function getMessages(category) {
       var dbRef = db.collection(category).orderBy('sent_at').get().then(function (querySnapshot) {
