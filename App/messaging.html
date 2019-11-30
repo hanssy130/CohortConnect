@@ -43,6 +43,7 @@
       height: 500px;
       padding: 25px;
       border-radius: 25px;
+      overflow: scroll;
     }
 
     #icon {
@@ -146,15 +147,17 @@
     saveButton.addEventListener("click", function () {
       const textToSave = inputTextField.value;
       console.log("I am going to add " + textToSave + " as a new collection.");
-      colRef.set({
+      colRef.add({
         text: textToSave,
         sent_at: new Date(),
-      }).then(function () {
+      }
+      ).then(function () {
         console.log("Text added!");
       }).catch(function (error) {
         console.log("Got an error: ", error);
       })
     });
+
 
     loadButton.addEventListener("click", function () {
       docRef.get().then(function (doc) {
@@ -171,8 +174,13 @@
     getRealtimeUpdates = function () {
       docRef.onSnapshot(function (doc) {
         if (doc && doc.exists) {
+          // docRef.sortBy('sent_at');
           const myData = doc.data();
-          outputHeader.innerHTML = "Messages:<br>" + myData.text;
+          // outputHeader.innerHTML = "Messages:<br/>";
+          inputTextField.innerHTML = myData.text;
+        }
+        else{
+          console.log('huh');
         }
       });
     };
@@ -180,7 +188,7 @@
     getRealtimeUpdates();
 
     function getMessages(category) {
-      var dbRef = db.collection(category).get().then(function (querySnapshot) {
+      var dbRef = db.collection(category).orderBy('sent_at').get().then(function (querySnapshot) {
 
         querySnapshot.forEach(function (doc) {
 
@@ -188,10 +196,10 @@
 
           // Creates the text.
           var para2 = document.createElement("p");
-          para2.id = "text"
+          para2.id = "text";
           document.getElementById("app").appendChild(para2);
           var txtmsg = document.createTextNode(doc.data().text);
-          para2.appendChild(txtmsg)
+          para2.appendChild(txtmsg);
 
           // // Creates profile picture.
           // var img = new Image();
