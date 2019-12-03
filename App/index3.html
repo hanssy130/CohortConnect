@@ -40,9 +40,13 @@
       margin: 0 auto;
       width: 500px;
       background-color: white;
-      height: 500px;
+      height: 230px;
       padding: 25px;
       border-radius: 25px;
+    }
+
+    #signout {
+      font-size: medium;
     }
   </style>
 </head>
@@ -80,38 +84,36 @@
   </script>
   <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
-
   <div id="header">
-    <a href="index3.html"><img src="logo.png" id="logo"></a>
+      <a href="index3.html"><img src="logo.png" id="logo"></a>
   </div>
-
-
   <br><br><br><br><br>
-
   <div id="firebaseui-auth-container"></div>
 
-
-
-  <!-- <div id="app">
-          <center>
-          <div id="loader"><h2>Loading...</h2></div>
-          <br><br>
-          </center>
-          <div id="search">let's read from our database: 
-
-            <span id=data>....</span>
-            <div id="results"></div>
-
-          </div>
-        </div> -->
-
-  <center>
+    <div id="app">
+      <h1>Announcements</h1>
+      <h3>Welcome to Cohort Connect!</h3>
+      <span>Please first build a profile and take preview your classmates. Click on messaging to say hi. I can't wait to meet you all in class!</span>
+      <br><br>
+      <span>- Professor Dempsey</span>
+    </div>
+    <center>
+    <br><br>
+    <a href="profile.html"><img src="icon1.png" width="250px"></a>
+    <br>
+    <span>Update Your Profile</span>
+    <br><br>
     <a href="messaging.html"><img src="icon2.png" width="250px"></a>
+    <br>
+    <span>Messaging Board</span>
     <br><br>
     <a href="search.html"><img src="icon3.png" width="250px"></a>
+    <br>
+    <span>Classlist</span>
+    <br><br><br><br><br>
+    <button id="signout">Signout</button>
   </center>
-
-  <br><br><br><br><br><br><br><br><br>
+  <br><br><br><br>
 
   <script>
     function GetList(category) {
@@ -133,16 +135,47 @@
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         //User is signed in.
-        db.collection("users").doc(user.uid).set({
-          name: user.displayName,
-          email: user.email,
-          pic: "http://www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg",
-          interests: ["N/A"],
-        }, { merge: true });
-        console.log(user.displayName);
-        console.log(user.email)
+        var check = 0
+        var dbRef = db.collection("users").get().then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            if (doc.data().name == user.displayName) {
+              console.log("hooray")
+              check = 1
+              console.log(check)
+            }
+          })
+          setDocument()
+        })
+        
+        function setDocument() {
+          if (check == 0) {
+            db.doc("users/" + user.displayName).set({
+              name: user.displayName,
+              email: user.email,
+              pic: "http://www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg",
+              interests: ["N/A"],
+            }, { merge: true });
+            console.log("Account has been set with " + user.displayName)
+          }
+          else {
+            console.log("No update.")
+          }
+        }
       }
     })
+
+    function signout() {
+      document.getElementById("signout").onclick = ()=>
+      {
+      firebase.auth().signOut().then(function(){
+        console.log("user signed out")
+        window.location.href="index.html"
+      }).catch(function(error){
+        console.log("error")
+      })
+      }
+    }
+    signout();
   </script>
 </body>
 

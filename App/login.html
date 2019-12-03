@@ -137,8 +137,10 @@
 
         // Add Users
         // str, str, str, num, list
+        firebase.auth().onAuthStateChanged(function (user) {
+
         function AddUser(user_id, u_first, u_last, u_age, interests) {
-            db.collection("users").doc(user_id).set({
+            db.doc("users/" + user.displayName).set({
                 firstName: u_first, // str
                 lastName: u_last, // str
                 age: u_age, // numb
@@ -152,6 +154,7 @@
                     console.error("Error writing document: ", error);
                 });
         }
+    })
         // update interest as an array
         function updateInterests(user_id, interests) {
             db.collection("users").doc(user_id).update({
