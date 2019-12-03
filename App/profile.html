@@ -43,7 +43,6 @@
       padding: 25px;
       border-radius: 25px;
       overflow: scroll;
-      text-align: center;
     }
 
     #icon {
@@ -68,6 +67,10 @@
 
     #signout {
       font-size: medium;
+    }
+
+    input {
+      width: 100px;
     }
   </style>
 </head>
@@ -104,20 +107,20 @@
   </script>
   <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
-
   <div id="header">
     <a href="index3.html"><img src="logo.png" id="logo"></a>
   </div>
-
-
   <br><br><br><br><br>
-
   <div id="firebaseui-auth-container"></div>
-
-
-
   <div id="app">
+    <h1>Profile</h1>
     <center>
+        <div id="nameHolder"></div>
+        <h4>Profile Picture</h4>
+        <div id="profilePicture"></div>
+        <input type="text" id="profilePictureChange" placeholder="Enter a link">
+        <br>
+        <h4>Enter up to 4 interests:</h4>
         <input type="text" id="interest1" placeholder="Enter an interest">
         <br>
         <input type="text" id="interest2" placeholder="Enter an interest">
@@ -126,12 +129,24 @@
         <br>
         <input type="text" id="interest4" placeholder="Enter an interest">
         <br>
-        <input type="text" id="classes" placeholder="What class are you taking?">
-        <br>
+        <h4>What classes are you taking?</h4>
+        <input type="text" id="classes" placeholder="Enter your classes">
+        <br><font style="font-size:9px; color:gray; font-style: italic;">(Seperate by commas.)</font>
+        <br><br>
         <button id="update">Update</button>
     </center>
   </div>
-
+  <br><br><br>
+  <center>
+    <div id="footer">
+      <a href="profile.html"><img id="icon" src="icon1.png" width="100px"></a>
+      <a href="messaging.html"><img id="icon" src="icon2.png" width="100px"></a>
+      <a href="classlist.html"><img id="icon" src="icon3.png" width="100px"></a>
+    </div>
+    <br><br><br><br><br>
+    <button id="signout">Signout</button>
+  </center>
+  <br><br><br><br><br><br><br><br><br>
   <script>
     var db = firebase.firestore();
 
@@ -143,6 +158,9 @@
     const int4 = document.querySelector("#interest4");
     const cls = document.querySelector("#classes");
     const updateButton = document.querySelector("#update");
+    const nameHolder = document.querySelector("nameHolder");
+    const profilePicture = document.querySelector("#profilePicture");
+    const profilePictureChange = document.querySelector("#profilePictureChange")
 
     firebase.auth().onAuthStateChanged(function (user) {
       console.log(user.displayName);
@@ -152,8 +170,10 @@
       const docRef2 = toString(user.displayName)
       const docRef = db.doc("users/" + user.displayName);
       const interests = [int1.value, int2.value, int3.value, int4.value];
+
       console.log("I am going to add " + interests + " as a new collection.");
       docRef.update({
+        pic: profilePictureChange.value,
         interests: interests,
         class: cls.value,
       }).then(function() {
@@ -163,75 +183,6 @@
       })
     })
     })
-
-
-    // saveButton.addEventListener("click", function () {
-    //   const textToSave = inputTextField.value;
-    //   console.log("I am going to add " + textToSave + " as a new collection.");
-    //   colRef.add({
-    //     text: textToSave,
-    //     sent_at: new Date(),
-    //   }
-    //   ).then(function () {
-    //     console.log("Text added!");
-    //   }).catch(function (error) {
-    //     console.log("Got an error: ", error);
-    //   })
-    // });
-    
-  
-  </script>
-
-  <br><br><br>
-  <center>
-    <div id="footer">
-      <a href="profile.html"><img id="icon" src="icon1.png" width="100px"></a>
-      <a href="messaging.html"><img id="icon" src="icon2.png" width="100px"></a>
-      <a href="search.html"><img id="icon" src="icon3.png" width="100px"></a>
-    </div>
-    <br><br><br><br><br>
-    <button id="signout">Signout</button>
-  </center>
-
-  <br><br><br><br><br><br><br><br><br>
-
-  <script>
-    // function GetList(category) {
-    //   var dbRef = db.collection(category).get().then(function (querySnapshot) {
-
-    //     querySnapshot.forEach(function (doc) {
-    //       // Creates profile picture.
-    //       var img = new Image();
-    //       img.src = doc.data().pic;
-    //       img.id = "profile"
-    //       document.getElementById('app').appendChild(img);
-
-    //       // Prints name.
-    //       var para = document.createElement("p");
-    //       para.id = "name"
-    //       document.getElementById("app").appendChild(para);
-    //       var node = document.createTextNode(doc.data().name);
-    //       para.appendChild(node);
-
-    //       // Prints interests
-    //       var parabeginning = document.createElement("p")
-    //       parabeginning.innerHTML = "<b>Interests:</b>"
-    //       document.getElementById("app").appendChild(parabeginning);
-    //       let interests = doc.data().interests;
-
-    //       var para = document.createElement("p");
-    //       interests.forEach((item => {
-    //         para.innerHTML += item + ", ";
-    //         document.getElementById("app").appendChild(para);
-    //       }))
-    //     })
-    //   })
-    //     .catch(function (error) {
-    //       console.log("error " + error)
-    //     })
-    // }
-    // GetList("users");
-
     //making sign out button
     function signout() {
       document.getElementById("signout").onclick = () => {
@@ -244,7 +195,6 @@
       }
     }
     signout();
-    
   </script>
 </body>
 
