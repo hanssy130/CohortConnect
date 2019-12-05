@@ -45,8 +45,11 @@ a {
 #signout {
     font-size: medium;
     position: absolute;
+    background-color: white;
+    border-radius: 15px;
+    height: 5vh;
     right:40px;
-    top: 60px;
+    top: 50px;
 }
 
 .descriptor {
@@ -67,7 +70,7 @@ tr{
         border-radius: 10px;
         width: 15vw;
         height: 5vh;
-        margin-top: -5vh;
+        margin-top: -2vh;
         margin-right: -2vw;
         position: fixed;
     }
