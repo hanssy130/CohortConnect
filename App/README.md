@@ -1,2 +1,2 @@
-[![Cohort Connect](App/logo.png)]
+[![Cohort Connect](group12/App/logo.png)]
 
