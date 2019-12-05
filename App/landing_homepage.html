@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home</title>
+  <link type="text/css" rel="stylesheet" href="css/landing_homepage_style.css"/>
+</head>
+
+<body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+  <script src="js/firebase-setup.js">
+    // Your web app's Firebase configuration
+
+  </script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+  <!-- Initialize Firebase -->
+  <script>var ui = new firebaseui.auth.AuthUI(firebase.auth());</script>
+
+  <!-- The surrounding HTML is left untouched by FirebaseUI.
+         Your app may use that space for branding, controls and other customizations.-->
+  <div id="header">
+      <a href="landing_homepage.html"><img src="logo.png" alt="logo" id="logo"/></a>
+  </div>
+  <br><br><br><br><br>
+  <div id="firebaseui-auth-container"></div>
+
+    <div id="app">
+      <h1>Announcements</h1>
+      <h3>Welcome to Cohort Connect!</h3>
+      <span>Please first build a profile and take preview your classmates. Click on messaging to say hi. I can't wait to meet you all in class!</span>
+      <br><br>
+      <span>- Professor Dempsey</span>
+    </div>
+    <center>
+    <br><br>
+    <a href="profile.html"><img src="icon1.png" width="250px"></a>
+    <br>
+    <span class="descriptor">Update Your Profile</span>
+    <br><br>
+    <a href="messaging.html"><img src="icon2.png" width="250px"></a>
+    <br>
+    <span class="descriptor">Messaging Board</span>
+    <br><br>
+    <a href="classlist.html"><img src="icon3.png" width="250px"></a>
+    <br>
+    <span class="descriptor">Classlist</span>
+    <br><br><br><br><br>
+  </center>
+  <button id="signout">Signout</button>
+  <br><br><br><br>
+
+  <script src="js/landing_homepage_js.js"></script>
+</body>
+
+</html>

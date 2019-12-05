@@ -1,0 +1,52 @@
+body {
+    background: #e6f2fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#inputstyle {
+    font-family: Arial;
+    font-size: 14px;
+}
+
+div {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#header {
+    background: #186191;
+    height: 100px;
+}
+
+#logo {
+    width: 80px;
+    position: relative;
+    left: 80px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#app {
+    margin: 0 auto;
+    width: 500px;
+    background-color: white;
+    height: 230px;
+    padding: 25px;
+    border-radius: 25px;
+}
+
+#signout {
+    font-size: medium;
+    position: absolute;
+    right:40px;
+    top: 60px;
+}
+
+.descriptor {
+    color: #3e7497;
+}
