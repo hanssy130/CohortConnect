@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       background: #e6f2fa;
@@ -34,9 +35,22 @@
       top: 50%;
       transform: translate(-50%, -50%);
     }
-
+    #nav-bottom {
+            visibility: hidden;
+        }
+    #icons{
+        width:100%;
+        margin-top: -5vh;
+    }
+    #icon1, #icon2, #icon3 {
+            position: relative;
+            padding-left: 8vw;
+            padding-right: 8vw;
+            width: 10.5vw;
+        }
     #app {
       margin: 0 auto;
+        margin-top: 8vh;
       width: 500px;
       background-color: white;
       height: 500px;
@@ -67,10 +81,117 @@
     }
 
     #signout {
-      font-size: medium;
-      position: absolute;
-      right:40px;
-      top: 60px;
+        font-size: medium;
+        position: absolute;
+        right:40px;
+        top: 30px;
+        background-color: white;
+        border-radius: 10px;
+        height: 5vh;
+    }
+    @media screen and (max-width: 600px) {
+        #app {
+            margin: auto;
+            margin-top: 10vh;
+            width: 70%;
+            background-color: white;
+            height: 50vh;
+            padding: 25px;
+            border-radius: 25px;
+            overflow: scroll;
+        }
+
+        #icon1, #icon2, #icon3 {
+            /*visibility: hidden;*/
+            display: none;
+        }
+
+        h1 {
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            background-color: white;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+
+        /*#inputstyle {*/
+        /*  font-family: Arial;*/
+        /*  font-size: 14px;*/
+        /*}*/
+        div {
+            color: black;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #header {
+            background: #186191;
+            position: fixed;
+            left: 0;
+            width: 100%;
+            height: 10vh;
+            color: white;
+            text-align: center;
+            margin-top: -1vh;
+        }
+
+        #logo {
+            /*width: 80px;*/
+            /*position: relative;*/
+            /*left: 80px;*/
+            /*top: 50%;*/
+            /*transform: translate(-50%, -50%);*/
+            width: 80px;
+            left: 10vw;
+            position: fixed;
+            top: 5vh;
+
+        }
+
+        #signout {
+            font-size: medium;
+            height: 5vh;
+            background-color: white;
+            border-radius: 15px;
+            margin-top: -4.55vh;
+            margin-right: -5vw;
+            position: absolute;
+        }
+
+        #nav-bottom {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 10vh;
+            background-color: #186191;
+            color: white;
+            text-align: center;
+            visibility: visible;
+        }
+
+        .icon {
+            padding: 30px;
+            margin-top: -2.5vh;
+            height: 10vh;
+            width: 15vw;
+            visibility: visible;
+            /*position: absolute;*/
+        }
+
+        #signout {
+            font-size: medium;
+            position: fixed;
+            right: 40px;
+            top: 60px;
+        }
+        #icon4,#icon5, #icon6{
+            height: 8vh;
+        }
     }
   </style>
 </head>
@@ -82,7 +203,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
   <!-- Firebase-setup.js -->
-  <script src="firebase-setup.js"></script>
+  <script src="js/firebase-setup.js"></script>
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   <script>
@@ -92,10 +213,23 @@
   <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
   <div id="header">
-      <a href="index3.html"><img src="logo.png" id="logo"></a>
+      <a href="landing_homepage.html"><img src="logo.png" id="logo"></a>
   </div>
   <br><br><br><br><br>
   <div id="firebaseui-auth-container"></div>
+     <table id="icons">
+        <tr>
+            <th>
+                <a href="profile.html"><img class="icon" id="icon1" src="icon1.png" ></a>
+            </th>
+            <th>
+                <a href="messaging.html"><img class="icon" id="icon2" src="icon2.png" ></a>
+            </th>
+            <th>
+                <a href="classlist.html"><img class="icon" id="icon3" src="icon3.png" ></a>
+            </th>
+        </tr>
+    </table>
   <div id="app">
     <center>
       <div id="loader">
@@ -109,10 +243,10 @@
   </div>
   <br><br><br>
   <center>
-    <div id="footer">
-      <a href="profile.html"><img id="icon" src="icon1.png" width="100px"></a>
-      <a href="messaging.html"><img id="icon" src="icon2.png" width="100px"></a>
-      <a href="classlist.html"><img id="icon" src="icon3.png" width="100px"></a>
+    <div id="nav-bottom">
+      <a href="profile.html"><img class="icon" id='icon4' src="icon1.png" width="100px"></a>
+      <a href="messaging.html"><img class="icon" id="icon5" src="icon2.png" width="100px"></a>
+      <a href="classlist.html"><img class="icon" id="icon6" src="icon3.png" width="100px"></a>
     </div>
     <br><br><br><br><br>
   </center>
