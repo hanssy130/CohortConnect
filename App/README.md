@@ -1,2 +1,2 @@
-[![Cohort Connect](https://imgur.com/a/I0idsRP)]
+[![Cohort Connect](https://i.imgur.com/TdfRDKd.png)]
 
