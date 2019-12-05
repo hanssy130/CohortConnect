@@ -8,7 +8,7 @@ body {
     width: 8vw;
     height: 5vh;
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 800px){
     #login{
         background-color: white;
         border-radius: 15px;
