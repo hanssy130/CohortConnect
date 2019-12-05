@@ -3,4 +3,16 @@ body {
 }
 #login {
     font-size: medium;
+    background-color: white;
+    border-radius: 8px;
+    width: 8vw;
+    height: 5vh;
+}
+@media screen and (max-width: 600px){
+    #login{
+        background-color: white;
+        border-radius: 15px;
+        height: 5vh;
+        width: 18vw;
+    }
 }
