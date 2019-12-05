@@ -2,7 +2,9 @@ body {
     background: #e6f2fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+#small_screen{
+    display: none;
+}
 #inputstyle {
     font-family: Arial;
     font-size: 14px;
@@ -49,4 +51,64 @@ a {
 
 .descriptor {
     color: #3e7497;
+}
+#icon1, #icon2, #icon3{
+    width: 250px;
+}
+
+tr{
+    text-align: center;
+    height: 100%;
+}
+
+@media screen and (max-width:600px){
+    #signout{
+        background-color: white;
+        border-radius: 10px;
+        width: 15vw;
+        height: 5vh;
+        margin-top: -5vh;
+        margin-right: -2vw;
+        position: fixed;
+    }
+    #app{
+        margin-left: 10vw;
+        margin-top: 5vh;
+        margin-right: 15vw;
+        width: 83vw;
+        background-color: white;
+        height: 230px;
+        padding: 25px;
+        border-radius: 25px;
+    }
+    #header{
+        position: fixed;
+        left: 0;
+        width: 100%;
+        height: 11vh;
+        color: white;
+        text-align: center;
+        margin-top: -1vh;
+    }
+    #logo{
+        width: 80px;
+        left: 50px;
+        position: absolute;
+        top: 5.25vh;
+    }
+    #big_screen{
+        display: none;
+    }
+    #small_screen{
+        display: block;
+        width: 100%;
+        /*padding: 15vw;*/
+        margin-top: -5vh;
+        margin-left: 5vw;
+    }
+    #icon4, #icon5, #icon6{
+        width: 25vw;
+        text-align: center;
+        padding: 5vw;
+    }
 }

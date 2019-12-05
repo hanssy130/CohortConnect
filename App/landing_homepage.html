@@ -3,6 +3,7 @@
 
 <head>
   <title>Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link type="text/css" rel="stylesheet" href="css/landing_homepage_style.css"/>
 </head>
 
@@ -41,20 +42,68 @@
     </div>
     <center>
     <br><br>
-    <a href="profile.html"><img src="icon1.png" width="250px"></a>
-    <br>
-    <span class="descriptor">Update Your Profile</span>
-    <br><br>
-    <a href="messaging.html"><img src="icon2.png" width="250px"></a>
-    <br>
-    <span class="descriptor">Messaging Board</span>
-    <br><br>
-    <a href="classlist.html"><img src="icon3.png" width="250px"></a>
-    <br>
-    <span class="descriptor">Classlist</span>
-    <br><br><br><br><br>
+      <table id="big_screen">
+        <tr>
+          <td>
+            <br>
+            <br>
+            <a href="profile.html"><img id="icon1" src="icon1.png" width="250px"></a>
+            <br>
+            <br>
+            <span class="descriptor">Update Your Profile</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <br>
+            <br>
+            <a href="messaging.html"><img id="icon2" src="icon2.png" width="250px"></a>
+            <br>
+            <br>
+            <span class="descriptor">Messaging Board</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <br>
+            <br>
+            <a href="classlist.html"><img id="icon3" src="icon3.png" width="250px"></a>
+            <br>
+            <br>
+            <span class="descriptor">Classlist</span>
+          </td>
+        </tr>
+      </table>
+      <table id="small_screen">
+        <tr>
+          <td>
+            <br>
+            <br>
+            <a href="profile.html"><img id="icon4" src="icon1.png"></a>
+            <br>
+            <br>
+            <span class="descriptor">Update Your Profile</span>
+          </td>
+          <td>
+            <br>
+            <br>
+            <a href="messaging.html"><img id="icon5" src="icon2.png" ></a>
+            <br>
+            <br>
+            <span class="descriptor">Messaging Board</span>
+          </td>
+          <td>
+            <br>
+            <br>
+            <a href="classlist.html"><img id="icon6" src="icon3.png" ></a>
+            <br>
+            <br>
+            <span class="descriptor">Classlist</span>
+          </td>
+        </tr>
+      </table>
   </center>
-  <button id="signout">Signout</button>
+  <button id="signout">Sign-out</button>
   <br><br><br><br>
 
   <script src="js/landing_homepage_js.js"></script>
