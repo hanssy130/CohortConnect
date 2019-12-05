@@ -1,0 +1,17 @@
+body {
+    background: #186191;
+}
+
+#inputstyle {
+    font-family: Arial;
+    font-size: 14px;
+}
+
+div {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
