@@ -13,8 +13,33 @@ Our three current features include:
 - Messaging the class
 
 # Description
-LOGIN.HTML
-PROFILE.HTML
-HOME.HTML
-CLASSLIST.HTML
-MESSAGES.HTML
+- INDEX.HTML
+    - This is the first page you would see when you go to this website.
+    Contains a logo and a login button for further action.
+- LANDING_HOMEPAGE.HTML
+    - This page have recent notification from the professors/intructors.
+    - Navigation buttons are introduced with some text.
+        - Navigation:
+            - Home
+            - Messages
+            - Class-list
+    
+- PROFILE.HTML
+    - Once you sign-up or log-in, you can enter your personal information.
+        - Name
+        - Interests
+        - Courses
+    
+- CLASSLIST.HTML
+    - This page gives you overall roster of your classmates.
+    - Each profile contains:
+        - Picture
+        - Interests
+        - Courses      
+   
+- MESSAGES.HTML
+    - This page is a hybrid of a forum page and messaging page. 
+    - Allows students to message but in an open setting.
+    - So far, unable to implement private messaging.
+    
+    
