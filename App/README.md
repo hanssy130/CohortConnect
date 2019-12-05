@@ -1,2 +1,2 @@
-[![N] Solid](App/logo.png)]
+[![Cohort Connect](App/logo.png)]
 
