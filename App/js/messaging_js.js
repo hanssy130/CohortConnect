@@ -9,6 +9,11 @@ function gotoBottom(id) {
     element.scrollTop = element.scrollHeight - element.clientHeight;
 }
 
+
+function autoReload(){
+    window.location.reload()
+}
+
 firebase.auth().onAuthStateChanged(function (user) {
     saveButton.addEventListener("click", function () {
         const textToSave = inputTextField.value;
@@ -20,11 +25,12 @@ firebase.auth().onAuthStateChanged(function (user) {
             }
         ).then(function () {
             console.log("Text added!");
+            autoReload();
         }).catch(function (error) {
             console.log("Got an error: ", error);
-        })
+        });
 
-        const userData = user.displayName
+        const userData = user.displayName;
         var para3 = document.createElement("p");
         para3.id = "text";
         document.getElementById("app").appendChild(para3);
@@ -39,6 +45,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         para2.appendChild(txtmsg);
         gotoBottom("app")
     });
+
 });
 
 function getMessages(category) {
@@ -58,6 +65,7 @@ function getMessages(category) {
             document.getElementById("app").appendChild(para2);
             var txtmsg = document.createTextNode(doc.data().text);
             para2.appendChild(txtmsg);
+
         })
     })
         .catch(function (error) {
@@ -65,18 +73,19 @@ function getMessages(category) {
         })
 }
 
-getMessages("/messages/userAuserB/conversations")
+getMessages("/messages/userAuserB/conversations");
 
 //making sign out button
 function signout() {
     document.getElementById("signout").onclick = () => {
         firebase.auth().signOut().then(function () {
-            console.log("user signed out")
+            console.log("user signed out");
             window.location.href = "index.html"
         }).catch(function (error) {
             console.log("error")
         })
     }
 }
+
 
 signout();
