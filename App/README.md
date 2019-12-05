@@ -1,2 +1,2 @@
-[![N] Solid](logo.png)]
+[![N] Solid](logo.png)](logo.png)
 
