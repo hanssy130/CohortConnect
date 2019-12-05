@@ -12,6 +12,9 @@ Our three current features include:
 - Looking up classmate's profiles
 - Messaging the class
 
-##Landing Page:
-
-
+# Description
+LOGIN.HTML
+PROFILE.HTML
+HOME.HTML
+CLASSLIST.HTML
+MESSAGES.HTML
