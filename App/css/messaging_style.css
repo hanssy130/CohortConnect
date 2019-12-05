@@ -1,0 +1,201 @@
+body {
+    background: #e6f2fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#nav-bottom {
+    visibility: hidden;
+}
+
+#icons {
+    /*padding-right: 20%;*/
+    width:100%;
+}
+
+#icon1, #icon2, #icon3 {
+    position: relative;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    width: 10.5vw;
+}
+
+h1 {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: -25px;
+    background-color: white;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+#inputstyle {
+    font-family: Arial;
+    font-size: 14px;
+}
+
+div {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#header {
+    background: #186191;
+    height: 100px;
+}
+
+#logo {
+    width: 80px;
+    /*left: 10px;*/
+    position: absolute;
+    top: 2.5vh;
+    left: 2.5vw;
+    /*transform: translate(-50%, -50%);*/
+}
+
+#latestHotDogStatus {
+    width: 400px;
+    height: 40px;
+    font-size: 12px;
+}
+
+#app {
+    margin: auto;
+    margin-top: -10vh;
+    width: 500px;
+    background-color: white;
+    height: 500px;
+    padding: 25px;
+    border-radius: 25px;
+    overflow: scroll;
+}
+
+.icon {
+    padding: 30px;
+}
+
+#signout {
+    font-size: medium;
+    float: right;
+    background-color: white;
+    border-radius: 15px;
+    height: 5vh;
+    margin-top: 4vh;
+    margin-right: 1vh;
+}
+
+@media screen and (max-width: 800px) {
+    #app {
+        margin: auto;
+        width: 70%;
+        background-color: white;
+        height: 50vh;
+        padding: 25px;
+        border-radius: 25px;
+        overflow: scroll;
+    }
+
+    #icon1, #icon2, #icon3 {
+        /*visibility: hidden;*/
+        display: none;
+    }
+
+    h1 {
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        background-color: white;
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+
+    /*#inputstyle {*/
+    /*  font-family: Arial;*/
+    /*  font-size: 14px;*/
+    /*}*/
+    div {
+        color: black;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #header {
+        background: #186191;
+        position: fixed;
+        left: 0;
+        width: 100%;
+        height: 10vh;
+        color: white;
+        text-align: center;
+        margin-top: -1vh;
+    }
+
+    #logo {
+        /*width: 80px;*/
+        /*position: relative;*/
+        /*left: 80px;*/
+        /*top: 50%;*/
+        /*transform: translate(-50%, -50%);*/
+        width: 80px;
+        left: 10px;
+        position: absolute;
+        top: 0.5vh;
+
+    }
+
+    #saveButton {
+        font-size: medium;
+        height: 5vh;
+        background-color: white;
+        border-radius: 15px;
+        margin-left: 15px;
+    }
+
+    #latestHotDogStatus {
+        width: 45vw;
+        height: 5vh;
+    }
+
+    #signout {
+        font-size: medium;
+        height: 5vh;
+        background-color: white;
+        border-radius: 15px;
+        margin-top: -4.55vh;
+        margin-right: -5vw;
+    }
+
+    #nav-bottom {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 13vh;
+        background-color: #186191;
+        color: white;
+        text-align: center;
+        visibility: visible;
+    }
+
+    .icon {
+        padding: 30px;
+        margin-top: -2.5vh;
+        height: 10vh;
+        width: 15vw;
+        /*position: absolute;*/
+    }
+
+    #signout {
+        font-size: medium;
+        position: absolute;
+        right: 40px;
+        top: 60px;
+    }
+}
